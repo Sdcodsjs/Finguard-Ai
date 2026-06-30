@@ -31,9 +31,7 @@ FinGuard AI is a comprehensive financial intelligence and risk audit platform. I
 ### Portfolio Analytics & Simulator Control Panel
 ![Portfolio Preview](./assets/portfolio.png)
 
-### 🎥 Demo Recording
-A complete visual demo video of the user flow:
-![Demo Recording Preview](./assets/demo_recording.webp)
+
 
 ---
 
