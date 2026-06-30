@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════
+   FinGuard AI — Design System
+   Dark mode, premium glassmorphism aesthetic
+══════════════════════════════════════════ */
+
+:root {
+  /* Brand palette */
+  --fg-bg: #090e1a;
+  --fg-surface: #0f1629;
+  --fg-surface-2: #141e35;
+  --fg-border: rgba(59, 130, 246, 0.12);
+  --fg-border-hover: rgba(59, 130, 246, 0.35);
+
+  --fg-text: #e2e8f0;
+  --fg-text-muted: #64748b;
+  --fg-text-dim: #334155;
+
+  --fg-blue: #3b82f6;
+  --fg-blue-light: #60a5fa;
+  --fg-blue-dark: #1d4ed8;
+  --fg-electric: #06b6d4;
+  --fg-amber: #f59e0b;
+  --fg-green: #10b981;
+  --fg-red: #ef4444;
+  --fg-purple: #8b5cf6;
+
+  /* Gradients */
+  --grad-hero: linear-gradient(135deg, #090e1a 0%, #0f1629 40%, #0a1628 100%);
+  --grad-card: linear-gradient(135deg, rgba(15,22,41,0.9) 0%, rgba(20,30,53,0.85) 100%);
+  --grad-blue: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  --grad-health: linear-gradient(90deg, #10b981, #34d399);
+  --grad-fraud: linear-gradient(90deg, #f59e0b, #ef4444);
+  --grad-risk: linear-gradient(90deg, #ef4444, #991b1b);
+
+  /* Shadows */
+  --shadow-card: 0 0 0 1px rgba(59,130,246,0.08), 0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow: 0 0 40px rgba(59,130,246,0.15);
+  --shadow-blue-glow: 0 0 20px rgba(59,130,246,0.4);
+}
+
+/* Base */
+* { box-sizing: border-box; }
+
+body {
+  background: var(--fg-bg);
+  color: var(--fg-text);
+  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Tailwind utilities that reference CSS vars */
+.bg-fg-bg { background: var(--fg-bg); }
+.bg-fg-surface { background: var(--fg-surface); }
+.bg-fg-surface-2 { background: var(--fg-surface-2); }
+.text-fg-text { color: var(--fg-text); }
+.text-fg-muted { color: var(--fg-text-muted); }
+.text-fg-blue { color: var(--fg-blue); }
+.text-fg-green { color: var(--fg-green); }
+.text-fg-red { color: var(--fg-red); }
+.text-fg-amber { color: var(--fg-amber); }
+.border-fg { border-color: var(--fg-border); }
+
+/* Glass card */
+.glass-card {
+  background: var(--grad-card);
+  border: 1px solid var(--fg-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(20px);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.glass-card:hover {
+  border-color: var(--fg-border-hover);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+/* Score ring animation */
+@keyframes scoreReveal {
+  from { stroke-dashoffset: 283; opacity: 0; }
+  to { opacity: 1; }
+}
+.score-ring {
+  animation: scoreReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Pulse dot for processing */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+.animate-pulse-dot {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Blue glow button */
+.btn-primary {
+  background: var(--grad-blue);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 0 0 1px rgba(59,130,246,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-blue-glow);
+}
+.btn-primary:active { transform: translateY(0); }
+
+/* Ghost button */
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--fg-border);
+  border-radius: 10px;
+  color: var(--fg-text);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-ghost:hover {
+  border-color: var(--fg-blue);
+  background: rgba(59,130,246,0.08);
+}
+
+/* Input */
+.fg-input {
+  background: var(--fg-surface-2);
+  border: 1px solid var(--fg-border);
+  border-radius: 10px;
+  color: var(--fg-text);
+  padding: 10px 14px;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.fg-input:focus { border-color: var(--fg-blue); }
+.fg-input::placeholder { color: var(--fg-text-muted); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--fg-bg); }
+::-webkit-scrollbar-thumb { background: var(--fg-border-hover); border-radius: 3px; }
+
+/* Score colors */
+.score-high { color: var(--fg-green); }
+.score-medium { color: var(--fg-amber); }
+.score-low { color: var(--fg-red); }
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+
+/* Pipeline steps */
+.pipeline-step-active {
+  border-color: var(--fg-blue) !important;
+  box-shadow: 0 0 12px rgba(59,130,246,0.3);
+}
+.pipeline-step-done {
+  border-color: var(--fg-green) !important;
+}
+
+/* Chat bubble */
+.chat-bubble-user {
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 12px 12px 4px 12px;
+}
+.chat-bubble-ai {
+  background: var(--fg-surface-2);
+  border: 1px solid var(--fg-border);
+  border-radius: 12px 12px 12px 4px;
+}
+
+/* Noise texture overlay for hero */
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Agent badge colors */
+.agent-financial { border-left: 3px solid var(--fg-blue); }
+.agent-fraud { border-left: 3px solid var(--fg-red); }
+.agent-risk { border-left: 3px solid var(--fg-amber); }
+.agent-esg { border-left: 3px solid var(--fg-green); }
+.agent-investment { border-left: 3px solid var(--fg-purple); }

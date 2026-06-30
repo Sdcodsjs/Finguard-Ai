@@ -1,0 +1,24 @@
+# Root .gitignore for Nova Project
+
+# Secrets and Environments
+.env
+.env.*
+!.env.example
+
+# AI/Agent Files
+CLAUDE.md
+AGENT.md
+AGENTS.md
+.windsurfrules
+.agents/
+.cursor/
+.jetro/
+.mcp.json
+
+# Data and Samples
+*.pdf
+test_pdfs/
+
+# Testing / Cache
+__pycache__/
+.pytest_cache/
