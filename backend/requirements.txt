@@ -29,7 +29,7 @@ Pillow==11.0.0
 
 # Data processing
 pandas==2.2.3
-numpy==2.2.0
+numpy>=1.22.4,<2.0.0
 
 # Caching
 cachetools==5.5.0
